@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
-import { NgFor } from '@angular/common';
+import { NgFor, CommonModule } from '@angular/common';
 import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-list',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, CommonModule],
   templateUrl: './pokemon-list.component.html',
-  styleUrl: './pokemon-list.component.scss'
+  styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
 
-  pokemons: { name: string, image: string }[] = [];
+  pokemons: any[] = [];
+  selectedPokemon: any = null;
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -25,10 +26,22 @@ export class PokemonListComponent implements OnInit {
       forkJoin<any[]>(requests).subscribe((responses) => {
         this.pokemons = responses.map((details) => ({
           name: details.name,
-          image: details.sprites.other['official-artwork'].front_default
+          image: details.sprites.other['official-artwork'].front_default,
+          id: details.id,
+          types: details.types.map((t: any) => t.type.name),
+          height: details.height,
+          weight: details.weight,
+          stats: details.stats
         }));
       });
     });
   }
 
+  selectPokemon(pokemon: any) {
+    this.selectedPokemon = pokemon;
+  }
+
+  closeModal() {
+    this.selectedPokemon = null;
+  }
 }

@@ -1,11 +1,11 @@
-
 :host {
   display: block;
+  min-height: 100vh;
   background: linear-gradient(to right, #f9f9f9, #ffeaa7);
   font-family: Arial, sans-serif;
   padding: 2rem;
+  box-sizing: border-box;
 }
-
 
 h2 {
   display: flex;
@@ -18,7 +18,6 @@ h2 {
   color: #2c3e50;
 }
 
-
 ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -27,7 +26,6 @@ ul {
   margin: 0;
   list-style: none;
 }
-
 
 li {
   background-color: #f0f0f0;
@@ -41,12 +39,10 @@ li {
   cursor: pointer;
 }
 
-
 li:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-
 
 img {
   display: block;
@@ -54,7 +50,6 @@ img {
   border-radius: 8px;
   background: #fff;
 }
-
 
 p {
   font-family: "Orbitron", sans-serif;
@@ -64,4 +59,81 @@ p {
   margin: 0;
   text-align: center;
   text-transform: uppercase;
+}
+
+/* Modal backdrop: fundo escurecido cobrindo toda a tela */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* sombra preta transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Conteúdo do modal */
+.modal-content {
+  background: #fff8dc; /* tom claro, suave */
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+/* Botão de fechar (X) */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 28px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #e74c3c;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #c0392b;
+}
+
+/* Imagem maior do Pokémon no modal */
+.modal-content img {
+  width: 180px;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+}
+
+/* Títulos */
+.modal-content h3 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+/* Lista de stats */
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-content li {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  color: #333;
+  text-transform: uppercase;
+  margin: 4px 0;
 }
