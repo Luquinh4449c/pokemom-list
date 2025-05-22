@@ -10,21 +10,27 @@
 </ul>
 
 <!-- Modal -->
-<div *ngIf="selectedPokemon" class="modal-backdrop" (click)="closeModal()">
+<div *ngIf="modalVisible" class="modal-backdrop" (click)="closeModal()">
   <div class="modal-content" (click)="$event.stopPropagation()">
+
     <button class="close-btn" (click)="closeModal()">&times;</button>
-    <h3>{{ selectedPokemon.name | uppercase }}</h3>
-    <img [src]="selectedPokemon.image" [alt]="selectedPokemon.name" />
-    <p><strong>Tipos:</strong> {{ selectedPokemon.types.join(', ') }}</p>
-    <p><strong>Altura:</strong> {{ selectedPokemon.height }}</p>
-    <p><strong>Peso:</strong> {{ selectedPokemon.weight }}</p>
+
+    <!-- Pokébola animada -->
+    <div class="pokeball-animation" [class.open]="isModalOpen"></div>
+
+    <h3>{{ selectedPokemon?.name | uppercase }}</h3>
+    <img [src]="selectedPokemon?.image" [alt]="selectedPokemon?.name" />
+    <p><strong>Tipos:</strong> {{ selectedPokemon?.types.join(', ') }}</p>
+    <p><strong>Altura:</strong> {{ selectedPokemon?.height }}</p>
+    <p><strong>Peso:</strong> {{ selectedPokemon?.weight }}</p>
     <div>
       <h4>Status:</h4>
       <ul>
-        <li *ngFor="let stat of selectedPokemon.stats">
+        <li *ngFor="let stat of selectedPokemon?.stats">
           {{ stat.stat.name | uppercase }}: {{ stat.base_stat }}
         </li>
       </ul>
     </div>
+
   </div>
 </div>

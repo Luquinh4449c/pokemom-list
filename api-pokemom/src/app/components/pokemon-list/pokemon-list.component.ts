@@ -14,6 +14,8 @@ export class PokemonListComponent implements OnInit {
 
   pokemons: any[] = [];
   selectedPokemon: any = null;
+  modalVisible = false;
+  isModalOpen = false;
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -39,9 +41,20 @@ export class PokemonListComponent implements OnInit {
 
   selectPokemon(pokemon: any) {
     this.selectedPokemon = pokemon;
+    this.modalVisible = true;
+
+    // Delay para aplicar animação da Pokébola abrindo
+    setTimeout(() => {
+      this.isModalOpen = true;
+    }, 10);
   }
 
   closeModal() {
-    this.selectedPokemon = null;
+    this.isModalOpen = false; // animação fechando
+
+    setTimeout(() => {
+      this.modalVisible = false;
+      this.selectedPokemon = null;
+    }, 500); // esperar animação terminar
   }
 }
