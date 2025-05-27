@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { NgFor, CommonModule } from '@angular/common';
 import { forkJoin } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pokemon-list',
   standalone: true,
-  imports: [NgFor, CommonModule],
+  imports: [NgFor, CommonModule, FormsModule],
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.scss']
 })
@@ -14,6 +15,7 @@ export class PokemonListComponent implements OnInit {
 
   pokemons: any[] = [];
   selectedPokemon: any = null;
+  filtro: string = '';
   modalVisible = false;
   isModalOpen = false;
 
@@ -57,4 +59,11 @@ export class PokemonListComponent implements OnInit {
       this.selectedPokemon = null;
     }, 500); // esperar animação terminar
   }
+
+ get pokemonsFiltrados() {
+  return this.pokemons.filter(pokemon =>
+    pokemon.name.toLowerCase().includes(this.filtro.toLowerCase())
+  );
+}
+
 }

@@ -1,20 +1,20 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
-  withHttpTransferCache
-} from "./chunk-LXKVC5QN.js";
-import {
   CommonModule,
   DomAdapter,
   getDOM,
   setRootDomAdapter
-} from "./chunk-B2C3A2M6.js";
+} from "./chunk-OHC3YNZO.js";
+import {
+  withHttpTransferCache
+} from "./chunk-EIBM5JGR.js";
 import {
   DOCUMENT,
   PLATFORM_BROWSER_ID,
   XhrFactory,
   isPlatformServer,
   parseCookieValue
-} from "./chunk-M73ZTW6L.js";
+} from "./chunk-A7NXGW4Q.js";
 import {
   APP_ID,
   ApplicationModule,
@@ -2016,4 +2016,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-V5PFTH5D.js.map
+//# sourceMappingURL=chunk-KKLIFNQL.js.map
